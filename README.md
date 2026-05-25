@@ -21,7 +21,7 @@ Execute (EX)
 Memory Access (MEM)
 Write Back (WB)
 
-The design supports basic RV32I-style instruction execution with pipelining concepts such as:
+The design supports RV32I-style instruction execution with pipelining concepts such as:
 
 Pipeline Registers
 Data Forwarding
@@ -33,6 +33,7 @@ Branch Handling
 The project is written completely in Verilog HDL using a modular design approach for better readability, debugging, and scalability.
 
 **Module Description**
+
 **1. Program Counter (PC)**
 Responsible for storing and updating the address of the next instruction to be fetched.
 Functions
