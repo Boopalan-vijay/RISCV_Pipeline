@@ -32,103 +32,35 @@ Branch Handling
 
 The project is written completely in Verilog HDL using a modular design approach for better readability, debugging, and scalability.
 
-**Module Description**
+**Demonstration of the data hazard resolving**
 
-**1. Program Counter (PC)**
-Responsible for storing and updating the address of the next instruction to be fetched.
-Functions
-Holds current instruction address
-Increments PC
-Handles branch/jump updates
+* The "memfile.hex.txt" has 16 different instructions to verify the processor.
+Where first three instructions have to do operations of:
 
-**2. Instruction Memory**
-Stores the machine instructions executed by the processor.
-Functions
-Fetches instruction using PC address
-Sends instruction to Decode stage
+x5 = x0 + 5
 
-**3. IF/ID Pipeline Register**
-Pipeline register between Fetch and Decode stages.
-Functions
-Stores fetched instruction
-Stores PC value for next stage
+x6 = x0 + 3
 
-**4. Control Unit**
-Generates control signals based on opcode and instruction type.
-Functions
-ALU control generation
-Memory control signals
-Register write control
-Branch control logic
+x7 = x5 + x6
 
-**5. Register File**
-Contains general-purpose registers used during instruction execution.
-Functions
-Reads source registers
-Writes back destination register data
-Supports simultaneous read/write operations
+But due to pipelining, The current value of x5 and x6 couldn't be fetched, the third instruction Result in "XXXX" ,this data hazard occurs and can be seen in the waveform **Refer Data hazard.png @ 800ns**.
 
-**6. Immediate Generator**
-Extracts and sign-extends immediate values from instructions.
-Functions
-Decodes immediate formats
-Generates signed immediate values
+**After the implementation of Hazard unit/Forwarding Logic**
 
-**7. ID/EX Pipeline Register**
-Transfers decoded information from Decode stage to Execute stage.
-Stores
-Register values
-Immediate data
-Control signals
-Destination register details
+ The data hazard has been resolved and can be verified **Refer Forward_unit.png**
+ 
+ x5=5;
+ 
+ x6=3;
 
-**8. ALU (Arithmetic Logic Unit)**
-Performs arithmetic and logical operations.
-Supported Operations
-Addition
-Subtraction
-AND
-OR
-XOR
-Comparison operations
+ x7=x5+x6; 
+ 
+ so 
+ 
+ x7=8;
+ 
+ The Result is now correct!!
+ 
+Using directed test cases such as these, the designed modules and the complete pipelined processor were functionally verified by observing instruction execution, hazard occurrence, and proper data forwarding/stall behavior through simulation waveforms.
 
-**9. Forwarding Unit**
-Handles data hazards by forwarding results from later stages.
-Purpose
-Avoids unnecessary stalls and improves pipeline efficiency.
 
-**10. Hazard Detection Unit**
-Detects pipeline hazards that cannot be solved through forwarding.
-Functions
-Detects load-use hazards
-Inserts stalls/NOPs when required
-
-**11. EX/MEM Pipeline Register**
-Stores execution stage outputs before memory access.
-Stores
-ALU result
-Memory control signals
-Register destination info
-
-**12. Data Memory**
-Handles load and store instructions.
-Functions
-Read data from memory
-Write data to memory
-
-**13. MEM/WB Pipeline Register**
-Transfers data from Memory stage to Write Back stage.
-Stores
-ALU output
-Memory read data
-Register write signals
-
-**14. Write Back Unit**
-Writes final processed data back into the register file.
-Functions
-Selects memory/ALU output
-Updates destination register
-
-**Tools Used**
-Verilog HDL
-vivado
