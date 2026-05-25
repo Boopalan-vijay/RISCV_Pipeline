@@ -41,11 +41,11 @@ x5 = x0 + 5
 x6 = x0 + 3
 x7 = x5 + x6
 
-But due to pipelining, The current value of x5 and x6 couldn't be fetched, the third instruction Result in "XXXX" ,this data hazard occurs and can be seen in the waveform **Refer Data hazard.png @ 800ns**.
+But due to pipelining, The current value of x5 and x6 couldn't be fetched, the third instruction Result in "XXXX" ,this data hazard occurs and can be seen in the waveform **Refer "Data hazard.png" @ 800ns**.
 
 **After the implementation of Hazard unit/Forwarding Logic**
 
- The data hazard has been resolved and can be verified **Refer Forward_unit.png**
+ The data hazard has been resolved and can be verified **"Refer Forward_unit.png"**
  
  x5=5;
  x6=3;
