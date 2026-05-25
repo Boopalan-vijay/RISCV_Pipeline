@@ -53,7 +53,8 @@ But due to pipelining, The current value of x5 and x6 couldn't be fetched, the t
  
  so 
  x7=8;
- The Result is now correct!!
+ 
+ The Results are now correct!!
  
  Using directed test cases such as these, the designed modules and the complete pipelined processor were functionally verified by observing instruction     execution, hazard occurrence, and proper data forwarding/stall behavior through simulation waveforms.
 
