@@ -4,11 +4,11 @@ A custom-designed 32-bit RISC-V pipelined processor implemented in Verilog HDL, 
 
 This project was developed as a hands-on learning and implementation project to strengthen concepts in:
 
-Processor Architecture
-Pipeline Design
-RTL Coding
-Instruction Execution Flow
-Hazard Detection & Forwarding
+Processor Architecture,
+Pipeline Design,
+RTL Coding,
+Instruction Execution Flow,
+Hazard Detection & Forwarding and
 Digital Design Fundamentals
 
 **Project Overview**
