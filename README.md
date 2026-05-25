@@ -38,9 +38,7 @@ The project is written completely in Verilog HDL using a modular design approach
 Where first three instructions have to do operations of:
 
 x5 = x0 + 5
-
 x6 = x0 + 3
-
 x7 = x5 + x6
 
 But due to pipelining, The current value of x5 and x6 couldn't be fetched, the third instruction Result in "XXXX" ,this data hazard occurs and can be seen in the waveform **Refer Data hazard.png @ 800ns**.
@@ -50,17 +48,13 @@ But due to pipelining, The current value of x5 and x6 couldn't be fetched, the t
  The data hazard has been resolved and can be verified **Refer Forward_unit.png**
  
  x5=5;
- 
  x6=3;
-
  x7=x5+x6; 
  
  so 
- 
  x7=8;
- 
  The Result is now correct!!
  
-Using directed test cases such as these, the designed modules and the complete pipelined processor were functionally verified by observing instruction execution, hazard occurrence, and proper data forwarding/stall behavior through simulation waveforms.
+ Using directed test cases such as these, the designed modules and the complete pipelined processor were functionally verified by observing instruction     execution, hazard occurrence, and proper data forwarding/stall behavior through simulation waveforms.
 
 
